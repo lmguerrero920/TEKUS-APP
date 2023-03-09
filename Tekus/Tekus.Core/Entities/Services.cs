@@ -10,11 +10,9 @@ namespace Tekus.Core.Entities
 {
     public class Services: ClassBase
     {
-        [Required]
-        [MaxLength(100)]
+        
         public string Name { get; set; }
-
-        [Column(TypeName ="decimal(18,4)")]
+         
         public decimal PriceHour { get; set; }
         public int CountryId { get; set; }
         public Country Country { get; set; }
