@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Tekus.Core.Entities;
@@ -23,13 +24,23 @@ namespace Tekus.WebAPI.Controllers
         }
 
         [HttpGet] 
-        public async Task<ActionResult<Supplier>> GetSuppliers([FromQuery] SupplierSpecificationParams supplierParams)
+        public async Task<ActionResult<Pagination<SupplierDto>>> GetSuppliers([FromQuery] SupplierSpecificationParams supplierParams)
         {
-            SupplierWithServicesSpecification spec = 
-                new SupplierWithServicesSpecification(supplierParams);
+            SupplierWithServicesSpecification spec = new SupplierWithServicesSpecification(supplierParams);
             System.Collections.Generic.IReadOnlyList<Supplier> supplier = await _supplierRepository.GetAllWithSpec(spec);
-            return Ok(_mapper.Map<IReadOnlyList<Supplier>,IReadOnlyList<SupplierDto>>(supplier));
-
+            SupplierForCountSpecification specCount = new SupplierForCountSpecification(supplierParams);
+            int totalSupplier = await _supplierRepository.CountAsync(specCount);
+            decimal rounded = Math.Ceiling(Convert.ToDecimal(totalSupplier / supplierParams.PageSize));
+            int totalPages = Convert.ToInt32(rounded);
+            IReadOnlyList<SupplierDto> data = _mapper.Map<IReadOnlyList<Supplier>,IReadOnlyList<SupplierDto>> (supplier);
+            return Ok(new Pagination<SupplierDto>
+            {
+                Count = totalSupplier,
+                Data = data,
+                PageCount  = totalPages,
+                PageIndex = supplierParams.PageIndex,
+                PageSize = supplierParams.PageSize
+            }); 
         }
 
         /// <summary>

@@ -10,12 +10,12 @@ namespace Tekus.Core.Specifications
     public class SupplierWithServicesSpecification : BaseSpecification<Supplier>
     {
         public SupplierWithServicesSpecification(SupplierSpecificationParams supplierParams)
-            :base(x=>(!supplierParams.ServicesId.HasValue
-            || x.ServicesId== supplierParams.ServicesId))
+            :base(x=>
+            (string.IsNullOrEmpty(supplierParams.Search)|| x.Name.Contains(supplierParams.Search))
+            && (!supplierParams.ServicesId.HasValue || x.ServicesId== supplierParams.ServicesId))
         {
             AddInclude(p => p.Services);
-            AddInclude(p => p.Services.Country);
-            // ApplyPaging(0,5);
+            AddInclude(p => p.Services.Country); 
             ApplyPaging(supplierParams.PageSize*(supplierParams.PageIndex-1),
                 supplierParams.PageSize);
             if (!string.IsNullOrEmpty(supplierParams.Sort))

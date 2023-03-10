@@ -47,6 +47,15 @@ namespace Tekus.WebAPI
 
             services.AddTransient<ISupplierRepository, SupplierRepository>();
             services.AddControllers();
+            services.AddCors(options => 
+            {
+                options.AddPolicy("CorsRule", rule =>
+                {
+                    rule.AllowAnyHeader().AllowAnyMethod()
+                    .WithOrigins("*");
+                });
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Tekus.WebAPI", Version = "v1" });
@@ -70,6 +79,7 @@ namespace Tekus.WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors("CorsRule");
 
             app.UseAuthorization();
 
