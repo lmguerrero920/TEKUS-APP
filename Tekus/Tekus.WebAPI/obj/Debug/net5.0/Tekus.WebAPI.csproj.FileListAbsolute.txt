@@ -110,7 +110,6 @@ D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Protoco
 D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.OpenApi.dll
-D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Newtonsoft.Json.dll
 D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -152,3 +151,5 @@ D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.Extensions.Dependency
 D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Abstractions.dll

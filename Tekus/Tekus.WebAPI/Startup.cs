@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -33,6 +34,11 @@ namespace Tekus.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var builder = services.AddIdentityCore<User>();
+            builder = new IdentityBuilder(builder.UserType, builder.Services);
+            builder.AddEntityFrameworkStores<SecurityDbContext>();
+            builder.AddSignInManager<SignInManager<User>>();
+            services.AddAuthentication();
 
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped(typeof(IGenericRepository<>),
@@ -45,6 +51,10 @@ namespace Tekus.WebAPI
                     ("DefaultConnection"));
                 });
 
+            services.AddDbContext<SecurityDbContext>(x => 
+            {
+                x.UseSqlServer(Configuration.GetConnectionString("IdentitySecurity"));
+            });
             services.AddTransient<ISupplierRepository, SupplierRepository>();
             services.AddControllers();
             services.AddCors(options => 

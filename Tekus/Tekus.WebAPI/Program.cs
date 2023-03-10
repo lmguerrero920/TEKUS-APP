@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Tekus.BusinessLogic.Data;
+using Tekus.Core.Entities;
 
 namespace Tekus.WebAPI
 {
@@ -25,10 +27,18 @@ namespace Tekus.WebAPI
                 
                 try
                 {
-                    var context = services.GetRequiredService<TekusDbContext>();
+                    TekusDbContext context = services.GetRequiredService<TekusDbContext>();
                     await context.Database.MigrateAsync();
-                    await TekusDbContextData.LoadDataAsync(context,loggerFactory);  
+                    await TekusDbContextData.LoadDataAsync(context,loggerFactory);
+                   
+                    UserManager<User> userManager = services.GetRequiredService<UserManager<User>>();
+                    SecurityDbContext identityContext = services.GetRequiredService<SecurityDbContext>();
+                    await identityContext.Database.MigrateAsync();
+                    await SecurityDbContextData.SeedUserAsync(userManager);
+
+
                 }
+
                 catch (Exception e)
                 {
                      var logger= loggerFactory.CreateLogger<Program>();
