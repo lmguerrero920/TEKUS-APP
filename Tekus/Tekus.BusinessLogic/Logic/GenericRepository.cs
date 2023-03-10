@@ -51,5 +51,18 @@ namespace Tekus.BusinessLogic.Logic
         {
             return await ApplySpecification(spec).CountAsync();
         }
+
+        public async Task<int> Add(T enty)
+        {
+           _context.Set<T>().Add(enty);
+          return  await _context.SaveChangesAsync();
+        }
+
+        public  async Task<int> Update(T enty)
+        {
+            _context.Set<T>().Attach(enty);
+            _context.Entry(enty).State= EntityState.Modified;
+           return await _context.SaveChangesAsync();
+        }
     }
 }

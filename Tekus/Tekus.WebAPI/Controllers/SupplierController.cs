@@ -51,9 +51,40 @@ namespace Tekus.WebAPI.Controllers
         {
             SupplierWithServicesSpecification spec = new SupplierWithServicesSpecification(id);
             Supplier supplier = await _supplierRepository.GetByIdWithSpec(spec);
-            if(supplier == null) { return NotFound(new CodeErrorResponse(404)); }
+            if(supplier == null) { return NotFound(
+                new CodeErrorResponse(404,"No existe el proveedor")); }
+          
             return _mapper.Map<Supplier, SupplierDto>(supplier); 
-        } 
+         
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Supplier>> Post(Supplier supplier)
+        {
+           var result=  await _supplierRepository.Add(supplier);
+            if (result == 0)
+            {
+                throw new Exception("No se inserto el producto");
+            }
+            return Ok(supplier);
+        }
+
+
+        [HttpPut("{id}")]
+        /// <summary>
+        /// se recibe por parametro el Id Proveedor y se genera actualización si coincide con el dato en BD
+        /// </summary>
+        public async Task<ActionResult<Supplier>> Put(int id,Supplier supplier)
+        {
+            supplier.Id= id;
+            var result = await _supplierRepository.Update(supplier);
+           
+            if (result == 0)
+            {
+                throw new Exception("No se Actualizo el producto");
+            }
+            return Ok(supplier);
+        }
 
     }
 }
