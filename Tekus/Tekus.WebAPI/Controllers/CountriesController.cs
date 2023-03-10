@@ -6,9 +6,8 @@ using Tekus.Core.Interfaces;
 
 namespace Tekus.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CountriesController : Controller
+   
+    public class CountriesController : BaseApiController
     {
 
         private readonly IGenericRepository<Country> _countryRepository;
@@ -20,22 +19,16 @@ namespace Tekus.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Country>>>
-            GetCountriesAll()
+        public async Task<ActionResult<IReadOnlyList<Country>>>GetCountriesAll()
         {
-            return Ok(await _countryRepository.GetAllAsync());
-
+            return Ok(await _countryRepository.GetAllAsync()); 
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Country>> GetCountriesById(int id)
         {
             return await _countryRepository.GetByIdAsync(id);
-        }
-
-
-
-
+        } 
 
     }
 }

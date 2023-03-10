@@ -16,6 +16,7 @@ using Tekus.BusinessLogic.Data;
 using Tekus.BusinessLogic.Logic;
 using Tekus.Core.Entities;
 using Tekus.Core.Interfaces;
+using Tekus.WebAPI.DTOs;
 
 namespace Tekus.WebAPI
 {
@@ -31,6 +32,8 @@ namespace Tekus.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped(typeof(IGenericRepository<>),
                 typeof(GenericRepository<>));
 
@@ -46,6 +49,7 @@ namespace Tekus.WebAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Tekus.WebAPI", Version = "v1" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
         }
 
@@ -57,7 +61,10 @@ namespace Tekus.WebAPI
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tekus.WebAPI v1"));
+
             }
+
+            app.UseStatusCodePagesWithReExecute("/errors","?code?{0}");
 
             app.UseHttpsRedirection();
 

@@ -11,12 +11,14 @@ namespace Tekus.Core.Specifications
     {
         public SupplierWithServicesSpecification()
         {
-            AddInclude(p => p.Services); 
+            AddInclude(p => p.Services);
+            AddInclude(p => p.Services.Country);
         }
         public SupplierWithServicesSpecification(int id) :
             base(x => x.Id == id)
         {
             AddInclude(p => p.Services);
+            AddInclude(p => p.Services.Country);
         } 
     }
 }

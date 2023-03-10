@@ -8,9 +8,8 @@ using Tekus.Core.Specifications;
 
 namespace Tekus.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ServicesController : Controller
+    
+    public class ServicesController : BaseApiController
     {
         private readonly IGenericRepository<Services> _servicesRepository;
 
@@ -33,8 +32,7 @@ namespace Tekus.WebAPI.Controllers
         /// </summary>
         [HttpGet("{id}")]   
         public async Task<ActionResult<Services>> GetServiceById(int id)
-        {
-           
+        { 
             var spec = new ServicesWithCountrySpecification(id);
             return await _servicesRepository.GetByIdWithSpec(spec);
         }

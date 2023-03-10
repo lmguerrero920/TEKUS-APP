@@ -10,15 +10,10 @@ namespace Tekus.Core.Entities
     public class Supplier : ClassBase
     {
       
-        public int NIT { get; set; }
-       
-
-        public string Name { get; set; }
-
-         
+        public int NIT { get; set; } 
+        public string Name { get; set; } 
         [DataType(DataType.EmailAddress)] 
-        public string Email { get; set; }
-
+        public string Email { get; set; } 
         public int ServicesId { get; set; }
         public Services Services { get; set; }
 

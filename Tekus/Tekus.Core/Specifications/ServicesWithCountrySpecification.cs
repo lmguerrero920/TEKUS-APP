@@ -11,7 +11,7 @@ namespace Tekus.Core.Specifications
     {
         public ServicesWithCountrySpecification()
         {
-            AddInclude(p => p.Country);
+            AddInclude(p => p.Country); 
         }
         public ServicesWithCountrySpecification(int id) :
             base(x => x.Id == id)

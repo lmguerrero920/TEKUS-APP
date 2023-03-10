@@ -146,3 +146,9 @@ D:\TestTekus\Tekus\Tekus.WebAPI\obj\Debug\net5.0\Tekus.WebAPI.RazorTargetAssembl
 D:\TestTekus\Tekus\Tekus.WebAPI\obj\Debug\net5.0\Tekus.WebAPI.csproj.CopyComplete
 D:\TestTekus\Tekus\Tekus.WebAPI\obj\Debug\net5.0\Tekus.WebAPI.genruntimeconfig.cache
 D:\TestTekus\Tekus\Tekus.WebAPI\obj\Debug\net5.0\ref\Tekus.WebAPI.dll
+D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\AutoMapper.dll
+D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+D:\TestTekus\Tekus\Tekus.WebAPI\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
