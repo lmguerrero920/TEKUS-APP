@@ -9,7 +9,7 @@ namespace Tekus.Core.Interfaces
 {
     public  interface ISupplierRepository
     {
-        Task<Supplier> GetSupplierAsync(int id);
+        Task<Supplier> GetSupplierByIdAsync(int id);
         Task<IReadOnlyList<Supplier>>  GetSupplierAsync();
 
     }

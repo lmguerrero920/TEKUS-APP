@@ -25,13 +25,9 @@ namespace Tekus.WebAPI
                 
                 try
                 {
-                    var context = 
-          services.GetRequiredService<TekusDbContext>();
-          await context.Database.MigrateAsync();
-                    await TekusDbContextData.
-                        LoadDataAsync(context,loggerFactory); 
-
-
+                    var context = services.GetRequiredService<TekusDbContext>();
+                    await context.Database.MigrateAsync();
+                    await TekusDbContextData.LoadDataAsync(context,loggerFactory);  
                 }
                 catch (Exception e)
                 {

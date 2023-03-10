@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tekus.BusinessLogic.Data;
 using Tekus.Core.Entities;
 using Tekus.Core.Interfaces;
 
@@ -10,14 +12,24 @@ namespace Tekus.BusinessLogic.Logic
 {
     public class SupplierRepository : ISupplierRepository
     {
-        public Task<Supplier> GetSupplierAsync(int id)
-        {
-            throw new NotImplementedException();
+        private readonly TekusDbContext _context;
+        public SupplierRepository(TekusDbContext context)
+        {        
+            _context = context;
         }
 
-        public Task<IReadOnlyList<Supplier>> GetSupplierAsync()
+        public  async Task<Supplier> GetSupplierByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Supplier.
+                Include(p => p.Services).FirstOrDefaultAsync(
+                p=>p.Id == id);
         }
+
+        public async Task<IReadOnlyList<Supplier>> GetSupplierAsync()
+        {
+            return await _context.Supplier.Include(p=> p.Services).ToListAsync();
+        }
+
+        
     }
 }

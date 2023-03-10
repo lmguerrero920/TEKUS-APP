@@ -10,3 +10,15 @@ D:\Tekus\Tekus\Tekus\Tekus.Core\obj\Debug\net5.0\Tekus.Core.dll
 D:\Tekus\Tekus\Tekus\Tekus.Core\obj\Debug\net5.0\refint\Tekus.Core.dll
 D:\Tekus\Tekus\Tekus\Tekus.Core\obj\Debug\net5.0\Tekus.Core.pdb
 D:\Tekus\Tekus\Tekus\Tekus.Core\obj\Debug\net5.0\ref\Tekus.Core.dll
+D:\TestTekus\Tekus\Tekus.Core\bin\Debug\net5.0\Tekus.Core.deps.json
+D:\TestTekus\Tekus\Tekus.Core\bin\Debug\net5.0\Tekus.Core.dll
+D:\TestTekus\Tekus\Tekus.Core\bin\Debug\net5.0\Tekus.Core.pdb
+D:\TestTekus\Tekus\Tekus.Core\obj\Debug\net5.0\Tekus.Core.csproj.AssemblyReference.cache
+D:\TestTekus\Tekus\Tekus.Core\obj\Debug\net5.0\Tekus.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\TestTekus\Tekus\Tekus.Core\obj\Debug\net5.0\Tekus.Core.AssemblyInfoInputs.cache
+D:\TestTekus\Tekus\Tekus.Core\obj\Debug\net5.0\Tekus.Core.AssemblyInfo.cs
+D:\TestTekus\Tekus\Tekus.Core\obj\Debug\net5.0\Tekus.Core.csproj.CoreCompileInputs.cache
+D:\TestTekus\Tekus\Tekus.Core\obj\Debug\net5.0\Tekus.Core.dll
+D:\TestTekus\Tekus\Tekus.Core\obj\Debug\net5.0\refint\Tekus.Core.dll
+D:\TestTekus\Tekus\Tekus.Core\obj\Debug\net5.0\Tekus.Core.pdb
+D:\TestTekus\Tekus\Tekus.Core\obj\Debug\net5.0\ref\Tekus.Core.dll
