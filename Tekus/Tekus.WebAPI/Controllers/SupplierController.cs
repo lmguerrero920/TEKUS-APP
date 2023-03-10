@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Tekus.Core.Entities;
 using Tekus.Core.Interfaces;
+using Tekus.Core.Specifications;
 
 namespace Tekus.WebAPI.Controllers
 {
@@ -10,9 +11,9 @@ namespace Tekus.WebAPI.Controllers
     [ApiController]
     public class SupplierController : ControllerBase
     {
-        private  readonly ISupplierRepository _supplierRepository;
+        private  readonly IGenericRepository<Supplier> _supplierRepository;
 
-        public SupplierController(ISupplierRepository supplierRepository)
+        public SupplierController(IGenericRepository<Supplier> supplierRepository)
         {
             _supplierRepository= supplierRepository;
         }
@@ -20,15 +21,20 @@ namespace Tekus.WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<Supplier>> GetSuppliers()
         {
-            var supplier = await _supplierRepository.GetSupplierAsync();
+            var spec = new SupplierWithServicesSpecification();
+            var supplier = await _supplierRepository.GetAllWithSpec(spec);
             return Ok(supplier);
 
         }
 
-        [HttpGet("{id}")]
+        /// <summary>
+        /// spec : Debe incluir la Logica de la condicion de la consulta y tambien las relaciones entre las entidades,la relacion entre Servicios y Paises
+        /// </summary>
+        [HttpGet("{id}")] 
         public async Task<ActionResult<Supplier>> GetSupplier(int id)
         {
-            return await _supplierRepository.GetSupplierByIdAsync(id); 
+            var spec = new SupplierWithServicesSpecification(id);
+            return await _supplierRepository.GetByIdWithSpec(spec); 
         } 
 
     }
