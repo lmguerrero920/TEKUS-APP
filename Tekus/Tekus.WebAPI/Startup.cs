@@ -17,6 +17,7 @@ using Tekus.BusinessLogic.Logic;
 using Tekus.Core.Entities;
 using Tekus.Core.Interfaces;
 using Tekus.WebAPI.DTOs;
+using Tekus.WebAPI.Middleware;
 
 namespace Tekus.WebAPI
 {
@@ -63,7 +64,7 @@ namespace Tekus.WebAPI
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tekus.WebAPI v1"));
 
             }
-
+            //app.UseMiddleware<ExceptionMiddleware>();
             app.UseStatusCodePagesWithReExecute("/errors","?code?{0}");
 
             app.UseHttpsRedirection();

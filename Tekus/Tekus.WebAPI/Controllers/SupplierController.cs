@@ -23,9 +23,10 @@ namespace Tekus.WebAPI.Controllers
         }
 
         [HttpGet] 
-        public async Task<ActionResult<Supplier>> GetSuppliers()
+        public async Task<ActionResult<Supplier>> GetSuppliers([FromQuery] SupplierSpecificationParams supplierParams)
         {
-            SupplierWithServicesSpecification spec = new SupplierWithServicesSpecification();
+            SupplierWithServicesSpecification spec = 
+                new SupplierWithServicesSpecification(supplierParams);
             System.Collections.Generic.IReadOnlyList<Supplier> supplier = await _supplierRepository.GetAllWithSpec(spec);
             return Ok(_mapper.Map<IReadOnlyList<Supplier>,IReadOnlyList<SupplierDto>>(supplier));
 
