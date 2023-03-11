@@ -12,6 +12,5 @@ namespace Tekus.Core.Interfaces
         string CreateToken(User usuario, IList<string> roles);
 
 
-
     }
 }

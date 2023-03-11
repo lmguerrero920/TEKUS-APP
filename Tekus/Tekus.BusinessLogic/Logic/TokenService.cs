@@ -26,37 +26,11 @@ namespace Tekus.BusinessLogic.Logic
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Token:Key"]));
         }
 
-        public string CreateToken(User user)
-        {
-            var claims = new List<Claim>
-            {
-                new Claim(JwtRegisteredClaimNames.Email,user.Email),
-                new Claim(JwtRegisteredClaimNames.Name,user.Name),
-                new Claim(JwtRegisteredClaimNames.FamilyName,user.LastName),
-                new Claim(JwtRegisteredClaimNames.Email,user.Email),
-                new Claim("username",user.UserName), 
-            };
-
-            var credencials = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
-
-            var tokenConfiguration = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(60),
-                SigningCredentials = credencials,
-                Issuer = _config["Token:Issuer"]
-            };
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenConfiguration);
-
-            return tokenHandler.WriteToken(token);
-
-        }
+         
 
         public string CreateToken(User usuario, IList<string> roles)
         {
-            var claims = new List<Claim>
+            List<Claim> claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Email, usuario.Email),
                 new Claim(JwtRegisteredClaimNames.Name, usuario.Name),
@@ -66,16 +40,16 @@ namespace Tekus.BusinessLogic.Logic
 
             if (roles != null && roles.Count > 0)
             {
-                foreach (var role in roles)
+                foreach (string role in roles)
                 {
                     claims.Add(new Claim(ClaimTypes.Role, role));
                 }
             }
 
 
-            var credencials = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+            SigningCredentials credencials = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 
-            var tokenConfiguration = new SecurityTokenDescriptor
+            SecurityTokenDescriptor tokenConfiguration = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(60),
@@ -83,8 +57,8 @@ namespace Tekus.BusinessLogic.Logic
                 Issuer = _config["Token:Issuer"]
             };
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenConfiguration);
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken token = tokenHandler.CreateToken(tokenConfiguration);
 
             return tokenHandler.WriteToken(token);
         }

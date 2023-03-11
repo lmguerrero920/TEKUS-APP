@@ -59,9 +59,12 @@ namespace Tekus.WebAPI.Controllers
         }
 
         [HttpPost]
+        /// <summary>
+        /// Metodo encargado de insertar modelo de datos
+        /// </summary>
         public async Task<ActionResult<Supplier>> Post(Supplier supplier)
         {
-           var result=  await _supplierRepository.Add(supplier);
+            int result =  await _supplierRepository.Add(supplier);
             if (result == 0)
             {
                 throw new Exception("No se inserto el producto");
@@ -72,12 +75,13 @@ namespace Tekus.WebAPI.Controllers
 
         [HttpPut("{id}")]
         /// <summary>
+        /// Metodo encargado de actualizar registro,
         /// se recibe por parametro el Id Proveedor y se genera actualización si coincide con el dato en BD
         /// </summary>
         public async Task<ActionResult<Supplier>> Put(int id,Supplier supplier)
         {
             supplier.Id= id;
-            var result = await _supplierRepository.Update(supplier);
+            int result = await _supplierRepository.Update(supplier);
            
             if (result == 0)
             {
@@ -85,6 +89,40 @@ namespace Tekus.WebAPI.Controllers
             }
             return Ok(supplier);
         }
+
+
+        [HttpDelete("{Id}")]
+        /// <summary>
+        /// Metodo encargado de actualizar registro,
+        /// se recibe por parametro el Id Proveedor y se genera actualización si coincide con el dato en BD
+        /// </summary>
+        public async Task<ActionResult<Supplier>> Delete(int id)
+        {
+            int result = await _supplierRepository.Delete(id);
+            if (result == 0)
+            {
+                throw new Exception("No se Borrar  el Pais");
+            }
+            return Ok(result);
+        }
+        /// <summary>
+        /// Metodo encargado de realizar la sumatoria de los registros(TOTAL)  
+        /// </summary>
+        [HttpGet("QuantitySupplier")]
+        public async Task<ActionResult<Supplier>> QuantitySupplier()
+        {
+            IReadOnlyList<Supplier> dataSupplier = await _supplierRepository.GetAllAsync();
+            int totalCount = dataSupplier.Count;
+            return Ok(
+                new ReportingDto
+                {
+                    Details = "Cantidad de Proveedores en el Sistema",
+                    Count = totalCount 
+                }
+             );
+        }
+
+
 
     }
 }

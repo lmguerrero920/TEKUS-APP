@@ -27,7 +27,7 @@ namespace Tekus.BusinessLogic.Data
                     List<Country> countries =
                     JsonSerializer.Deserialize<List<Country>>(countryData);
 
-                    foreach (var country in countries)
+                    foreach (Country country in countries)
                     {
                         context.Country.Add(country);
                     }
@@ -41,7 +41,7 @@ namespace Tekus.BusinessLogic.Data
                     List<Services> services =
                     JsonSerializer.Deserialize<List<Services>>(countryData);
 
-                    foreach (var service in services)
+                    foreach (Services service in services)
                     {
                         context.Services.Add(service);
                     }
@@ -56,7 +56,7 @@ namespace Tekus.BusinessLogic.Data
                     File.ReadAllText("../Tekus.BusinessLogic/Data/LoadData/supplier.json");
                     List<Supplier> suppliers = JsonSerializer.Deserialize<List<Supplier>>(supplierData);
 
-                    foreach (var supplier in suppliers)
+                    foreach (Supplier supplier in suppliers)
                     {
                         context.Supplier.Add(supplier);
                     }

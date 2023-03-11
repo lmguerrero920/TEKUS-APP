@@ -64,5 +64,13 @@ namespace Tekus.BusinessLogic.Logic
             _context.Entry(enty).State= EntityState.Modified;
            return await _context.SaveChangesAsync();
         }
+
+        public async Task<int> Delete(int id)
+        { 
+            _context.Entry(id).State = EntityState.Deleted;
+            return await _context.SaveChangesAsync();
+        }
+
+      
     }
 }

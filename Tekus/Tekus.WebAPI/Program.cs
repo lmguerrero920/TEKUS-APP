@@ -19,7 +19,7 @@ namespace Tekus.WebAPI
         public static async Task Main(string[] args)
         {
             IHost host =  CreateHostBuilder(args).Build();
-          using(var scope = host.Services.CreateScope())
+          using(IServiceScope scope = host.Services.CreateScope())
             {
                 IServiceProvider services = scope.ServiceProvider;
                 ILoggerFactory loggerFactory =
@@ -41,7 +41,7 @@ namespace Tekus.WebAPI
 
                 catch (Exception e)
                 {
-                     var logger= loggerFactory.CreateLogger<Program>();
+                    ILogger<Program> logger = loggerFactory.CreateLogger<Program>();
                     logger.LogError(e, "Errores en el proceso de Migración");
                 } 
             }

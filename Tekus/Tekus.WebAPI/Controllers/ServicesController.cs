@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Tekus.BusinessLogic.Logic;
@@ -21,8 +22,8 @@ namespace Tekus.WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<Services>>>GetServicesAll()
         {
-            var spec = new ServicesWithCountrySpecification();
-            var supplier = await _servicesRepository.GetAllWithSpec(spec);
+            ServicesWithCountrySpecification spec = new ServicesWithCountrySpecification();
+            IReadOnlyList<Services> supplier = await _servicesRepository.GetAllWithSpec(spec);
             return Ok(supplier);
 
         }
@@ -32,9 +33,56 @@ namespace Tekus.WebAPI.Controllers
         /// </summary>
         [HttpGet("{id}")]   
         public async Task<ActionResult<Services>> GetServiceById(int id)
-        { 
-            var spec = new ServicesWithCountrySpecification(id);
+        {
+            ServicesWithCountrySpecification spec = new ServicesWithCountrySpecification(id);
             return await _servicesRepository.GetByIdWithSpec(spec);
+        }
+
+        [HttpPost]
+        /// <summary>
+        /// Metodo encargado de insertar modelo de datos
+        /// </summary>
+        public async Task<ActionResult<Services>> Post(Services services)
+        {
+            int result = await _servicesRepository.Add(services);
+            if (result == 0)
+            {
+                throw new Exception("No se inserto el producto");
+            }
+            return Ok(services);
+        }
+
+
+        [HttpPut("{id}")]
+        /// <summary>
+        /// Metodo encargado de actualizar registro,
+        /// se recibe por parametro el Id Servicio y se genera actualización si coincide con el dato en BD
+        /// </summary>
+        public async Task<ActionResult<Services>> Put(int id, Services services)
+        {
+            services.Id = id;
+            int result = await _servicesRepository.Update(services);
+
+            if (result == 0)
+            {
+                throw new Exception("No se Actualizo el producto");
+            }
+            return Ok(services);
+        }
+
+        [HttpDelete("{Id}")]
+        /// <summary>
+        /// Metodo encargado de actualizar registro,
+        /// se recibe por parametro el Id Proveedor y se genera actualización si coincide con el dato en BD
+        /// </summary>
+        public async Task<ActionResult<Supplier>> Delete(int id)
+        {
+            int result = await _servicesRepository.Delete(id);
+            if (result == 0)
+            {
+                throw new Exception("No se Borrar  el Pais");
+            }
+            return Ok(result);
         }
 
 

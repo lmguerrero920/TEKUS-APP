@@ -1,0 +1,672 @@
+{
+	"info": {
+		"_postman_id": "020961f1-ea12-4d3f-af76-b03287e6b79d",
+		"name": "API REST LUIS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16595359"
+	},
+	"item": [
+		{
+			"name": "ORDENAMIENTO,PAGESIZE,PAGEINDEX,COUNT DATA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/Supplier?sort=IdAsc&ServicesId=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Supplier"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "IdAsc"
+						},
+						{
+							"key": "ServicesId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BUSQUEDA,PAGINACION",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/Supplier?search=Importaciones",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Supplier"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "Importaciones"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN DE USUARIO DATO ERRADO",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"email\":\"luguerrero10@poligran.edu.co\",\r\n \"password\":\"NoExiste*++\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44303/api/User/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"User",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN USER  DATO OK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"email\":\"luguerrero10@poligran.edu.co\",\r\n \"password\":\"Xamarin10*++\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44303/api/user/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTRAR USUARIO",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"miguelito_guerrero37141@elpoli.edu.co\" ,\r\n\"password\" :\"Xamarin10*++\",\r\n\"name\": \"Luis Manuel\",\r\n\"lastname\":\"Gutierrez\",\r\n\"Username\":\"miguel00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44303/api/User/Register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"User",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VALIDACION DE EMAIL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/User/validateemail?email=luguerrero10@poligran.edu.co",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"User",
+						"validateemail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "luguerrero10@poligran.edu.co"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "INSERT SUPPLIER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nit\": 1222222222,\r\n    \"name\": \"SOCIEDAD LIMITADA\",\r\n    \"email\": \"lmguerrero920@unal.edu.co\"  ,\r\n    \"servicesId\":1 \r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44303/api/Supplier",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Supplier"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE SUPPLIER",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nit\": 88888888,\r\n    \"name\": \"BANCOLOMBIA SAS\",\r\n    \"email\": \"lmguerrero920@unal.edu.co\",\r\n    \"servicesId\": 1,\r\n    \"services\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44303/api/Supplier/5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Supplier",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SELECT ALL SUPPLIER",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/Supplier",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Supplier"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SELECT BY ID SUPPLIER",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/Supplier/4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Supplier",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "INSERT SERVICES",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\":\"Mantenimiento Correctivo\",\r\n\"priceHour\": 120.000,\r\n\"countryId\": 6\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44303/api/Services",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE SERVICES",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\":\"Mantenimiento Correctivo\",\r\n\"priceHour\": 150.000,\r\n\"countryId\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44303/api/Services/4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Services",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SELECT ALL SERVICES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/Services",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SELECT  BY ID SERVICES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/Services/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Services",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SELECT ALL COUNTRY",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/Countries",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SELECT BY ID COUNTRY",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/Countries/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Countries",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "INSERT COUNTRY",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jamaica\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44303/api/Countries",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE COUNTRY",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Uruguay\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44303/api/Countries/7",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Countries",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE COUNTRY",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/Countries/7",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Countries",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE USER-CASO ERROR -NO EXISTE USER",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"prueba@elpoli.edu.co\" ,\r\n\"password\" :\"Xamarin10*++\",\r\n\"name\": \"Jose Miguel\",\r\n\"lastname\":\"Guerrero\",\r\n\"Username\":\"miguel00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44303/api/User/Update/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"User",
+						"Update",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE USER EXISTENTE-OK",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"prueba@elpoli.edu.co\" ,\r\n\"password\" :\"Xamarin10*++\",\r\n\"name\": \"Jose Miguel\",\r\n\"lastname\":\"Guerrero\",\r\n\"Username\":\"miguel00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44303/api/User/Update/d4c71a5a-5493-491c-a100-161cbdab85d9",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"User",
+						"Update",
+						"d4c71a5a-5493-491c-a100-161cbdab85d9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PAGINADOR USUARIOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/User/pagination",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"User",
+						"pagination"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VALIDACION ROLES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/User/account/d4c71a5a-5493-491c-a100-161cbdab85d9",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"User",
+						"account",
+						"d4c71a5a-5493-491c-a100-161cbdab85d9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE SERVICES",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/Services/7",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Services",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE SUPPLIER",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/Supplier/7",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"Supplier",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "METRICA-CANTIDAD USUARIOS EN EL SISTEMA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44303/api/User/QuantityUsers",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44303",
+					"path": [
+						"api",
+						"User",
+						"QuantityUsers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

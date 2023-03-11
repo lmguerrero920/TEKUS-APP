@@ -23,5 +23,7 @@ namespace Tekus.Core.Interfaces
         Task<int> Add(T enty);
         Task<int> Update(T enty);
 
+        
+        Task<int> Delete(int id); 
     }
 }

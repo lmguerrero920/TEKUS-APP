@@ -13,9 +13,9 @@ namespace Tekus.WebAPI.Extensions
 
         public static async Task<User> FindUserAsync(this UserManager<User> input, ClaimsPrincipal usr)
         {
-            var email = usr?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            string email = usr?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
 
-            var usuario = await input.Users.SingleOrDefaultAsync(x => x.Email == email);
+            User usuario = await input.Users.SingleOrDefaultAsync(x => x.Email == email);
 
             return usuario;
         }
